@@ -1,0 +1,109 @@
+									DOCUMENTACION EN MARKDOWN
+
+# Hoja de Cálculo
+
+## Descripción
+Este programa implementa una hoja de cálculo básica utilizando Java y Swing. Permite al usuario crear múltiples hojas, ingresar datos, realizar operaciones 
+básicas y guardar los datos en un archivo Excel.
+
+## Características
+- Creación de nuevas hojas de cálculo.
+- Edición de celdas con restricciones en la hoja 2.
+- Funciones de suma, resta, multiplicación y división.
+- Guardado y apertura de archivos Excel.
+- Interfaz gráfica con pestañas y botones de navegación.
+
+## Uso
+- Al iniciar, se muestran dos hojas de cálculo.
+- Se puede agregar una nueva hoja presionando el botón "+".
+- En la hoja 2, las celdas B2 y C2 no son editables.
+- Las funciones de suma, resta, multiplicación y división se pueden realizar en cualquier celda.
+- Se puede guardar el contenido de la hoja de cálculo en un archivo Excel.
+- Se puede abrir un archivo Excel existente para cargar los datos en la hoja de cálculo.
+
+## Requisitos
+- Java Development Kit (JDK) 8 o superior.
+- Biblioteca Apache POI para manejar archivos Excel.
+	-commons-collections4-4.1
+	-poi-3.16
+	-poi-ooxml-3.16
+	-poi-ooxml-schemas-3.16
+	-xmlbeans-2.6.0
+## Ejecución
+Para ejecutar el programa, compile el código Java y ejecute la clase `HojaCalculo`. Asegúrese de tener la biblioteca Apache POI en el classpath.
+
+## Notas
+Este programa es una implementación básica de una hoja de cálculo y puede ser mejorado con más funcionalidades y una interfaz de usuario más robusta.
+
+
+# EvaluadorFormula
+
+Clase que se encarga de evaluar las fórmulas en las celdas de una tabla.
+
+## Métodos
+
+- `public static void evaluarCelda(DefaultTableModel modelo, int fila, int columna)`: Método para evaluar una fórmula en una celda de una tabla.
+
+- `private static void evaluarOperacion(DefaultTableModel modelo, int fila, int columna, String formula, String operadorRegex, DoubleBinaryOperator operacion)`: Método para evaluar una operación en una fórmula.
+
+- `private static double evaluateSum(String expression, DefaultTableModel modelo)`: Método para evaluar la función SUMA en una fórmula.
+
+- `private static double evaluateMultiplication(String expression, DefaultTableModel modelo)`: Método para evaluar la función MULTIPLICAR en una fórmula.
+
+- `private static double evaluateResta(String expression, DefaultTableModel modelo)`: Método para evaluar la función RESTA en una fórmula.
+
+- `private static double evaluateDivision(String expression, DefaultTableModel modelo)`: Método para evaluar la función DIVIDIR en una fórmula.
+
+
+# ExcelLikeTable
+
+Clase que extiende `JTable` para crear una tabla similar a Excel, con comportamientos especiales en la primera columna y en el ajuste dinámico del tamaño de las filas.
+
+## Constructores
+
+- `public ExcelLikeTable(DefaultTableModel modelo)`: Constructor de la clase `ExcelLikeTable`.
+
+## Métodos
+
+- `public boolean isCellEditable(int row, int column)`: Determina si una celda es editable o no.
+
+- `public void changeSelection(int fila, int columna, boolean toggle, boolean extend)`: Cambia la selección de la celda.
+
+- `public void setValueAt(Object aValue, int row, int column)`: Establece el valor de una celda y evalúa su contenido como fórmula si es necesario.
+
+- `public Component prepareRenderer(TableCellRenderer renderer, int fila, int columna)`: Prepara el renderizado de una celda.
+
+    - `renderer`: El renderer de la celda.
+    - `fila`: Fila de la celda.
+    - `columna`: Columna de la celda.
+    - Retorna: El componente renderizado.
+
+# MiScrollBarUI
+
+Clase que personaliza la apariencia de las barras de desplazamiento.
+
+## Métodos
+
+- `protected JButton createDecreaseButton(int orientation)`: Crea un botón para decrementar el valor de la barra de desplazamiento.
+
+    - `orientation`: Orientación del botón (vertical u horizontal).
+    - Retorna: El botón creado.
+
+- `protected JButton createIncreaseButton(int orientation)`: Crea un botón para incrementar el valor de la barra de desplazamiento.
+
+    - `orientation`: Orientación del botón (vertical u horizontal).
+    - Retorna: El botón creado.
+
+- `protected void paintThumb(Graphics g, JComponent c, Rectangle thumbBounds)`: Pinta el "thumb" de la barra de desplazamiento.
+
+    - `g`: Gráfico donde se va a pintar.
+    - `c`: Componente que contiene la barra de desplazamiento.
+    - `thumbBounds`: Área del "thumb" a pintar.
+
+- `protected void paintTrack(Graphics g, JComponent c, Rectangle trackBounds)`: Pinta el "track" de la barra de desplazamiento.
+
+    - `g`: Gráfico donde se va a pintar.
+    - `c`: Componente que contiene la barra de desplazamiento.
+    - `trackBounds`: Área del "track" a pintar.
+
+
